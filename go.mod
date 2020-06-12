@@ -1,3 +1,3 @@
-module netology/bgo_func/pkg
+module netology/bgo_func
 
 go 1.14

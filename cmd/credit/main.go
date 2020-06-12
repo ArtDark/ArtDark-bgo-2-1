@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"netology/bgo_func/pkg/pkg/credit"
+	"netology/bgo_func/pkg/credit"
 )
 
 func main() {
