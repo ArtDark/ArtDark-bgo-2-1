@@ -2,6 +2,7 @@ package credit
 
 import "math"
 
+
 func Calculate(creditSum, period, percent int) (monthlyPay, overpayment, totalPay int) {
 	monthlyPercent := math.Round((float64(percent)/12/100)*1000) / 1000 // V 166
 
@@ -15,12 +16,3 @@ func Calculate(creditSum, period, percent int) (monthlyPay, overpayment, totalPa
 	return
 
 }
-
-//
-//func pow(num, pow float64) float64 {
-//	var sum int = num
-//	for i := 1; i < pow; i++ {
-//		sum = sum * num
-//	}
-//	return sum
-//}
