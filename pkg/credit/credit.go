@@ -1,11 +1,14 @@
 package credit
 
-func Calculate(creditSum, period, percent uint64) (monthlyPay, overpayment, totalPay uint64) {
-	monthlyPercent := percent * 100 / 12 // *divine 10_000
+import "math"
 
-	coefficient := (monthlyPercent * pow(10_000 + monthlyPercent, period)) / (pow(10_000 + monthlyPercent, period) - 10_000)
+func Calculate(creditSum, period, percent int) (monthlyPay, overpayment, totalPay int) {
+	monthlyPercent := math.Round((float64(percent)/12/100)*1000) / 1000 // V 166
 
-	monthlyPay = coefficient * creditSum
+	exp := math.Pow(1+monthlyPercent, float64(period)) // 1,834654562
+	coefficient := (monthlyPercent * exp) / (exp - 1)
+
+	monthlyPay = int(math.Round(coefficient*1_000_000)) * creditSum / 1_000_000
 	overpayment = period*monthlyPay - creditSum
 	totalPay = monthlyPay * period
 
@@ -13,11 +16,11 @@ func Calculate(creditSum, period, percent uint64) (monthlyPay, overpayment, tota
 
 }
 
-
-func pow(num, pow uint64) uint64 {
-	var sum uint64 = num
-	for i := 1; i < int(pow); i++ {
-		sum = sum * num
-	}
-	return sum
-}
+//
+//func pow(num, pow float64) float64 {
+//	var sum int = num
+//	for i := 1; i < pow; i++ {
+//		sum = sum * num
+//	}
+//	return sum
+//}
