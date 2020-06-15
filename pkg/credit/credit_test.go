@@ -2,8 +2,7 @@ package credit_test
 
 import (
 	"fmt"
-	"netology/bgo_func/pkg/credit"
-
+	"github.com/ArtDark/bgo_2_func/pkg/credit"
 )
 
 func ExampleCalculate() {
@@ -13,4 +12,3 @@ func ExampleCalculate() {
 	// 3718400 33862300 133862300
 	// 37184 338623 1338623
 }
-
